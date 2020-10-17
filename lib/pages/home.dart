@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+
+final GoogleSignIn googleSignIn = GoogleSignIn();
 
 class Home extends StatefulWidget {
   @override
@@ -8,9 +11,51 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   bool isAuth = false;
+  @override
+  void initState() {
+    super.initState();
+    googleSignIn.onCurrentUserChanged.listen((account) {
+      handleSignIn(account);
+    }, onError: (err) {
+      print('Error: $err');
+    });
+    googleSignIn.signInSilently(suppressErrors: false).then((account) {
+      handleSignIn(account);
+    }).catchError((err) {
+      print('Error: $err');
+    });
+  }
+
+  handleSignIn(GoogleSignInAccount account) {
+    if (account != null) {
+      print('User Account: $account');
+      setState(() {
+        isAuth = true;
+      });
+    } else {
+      setState(() {
+        isAuth = false;
+      });
+    }
+  }
+
+  login() {
+    googleSignIn.signIn();
+  }
+
+  logOut() {
+    googleSignIn.signOut();
+  }
 
   buildAuthScreen() {
-    return Text('Byee');
+    return Center(
+      child: RaisedButton(
+        onPressed: () {
+          logOut();
+        },
+        color: Colors.blue,
+      ),
+    );
   }
 
   buildUnAuthScreen() {
@@ -40,7 +85,9 @@ class _HomeState extends State<Home> {
               ),
             ),
             GestureDetector(
-              onTap: () => print('hello'),
+              onTap: () {
+                login();
+              },
               child: Container(
                 width: 260.0,
                 height: 60.0,
