@@ -9,6 +9,7 @@
 .history
 .svn/
 google-services.json
+*build.gradle
 
 # IntelliJ related
 *.iml
@@ -29,7 +30,6 @@ google-services.json
 .pub-cache/
 .pub/
 /build/
-app/build.gradle
 
 # Android related
 **/android/**/gradle-wrapper.jar
