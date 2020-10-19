@@ -123,7 +123,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       body: PageView(
         children: <Widget>[
-          RaisedButton(onPressed: logOut(), child: Text('logout')),
+          RaisedButton(onPressed: logOut, child: Text('logout')),
           // Timeline(),
           ActivityFeed(),
           Upload(),
@@ -180,7 +180,7 @@ class _HomeState extends State<Home> {
               ),
             ),
             GestureDetector(
-              onTap: login,
+              onTap: login(),
               child: Container(
                 width: 260.0,
                 height: 60.0,
