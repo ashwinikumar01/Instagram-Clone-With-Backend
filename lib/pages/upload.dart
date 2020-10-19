@@ -1,5 +1,7 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:image_picker/image_picker.dart';
 
 class Upload extends StatefulWidget {
   @override
@@ -7,7 +9,58 @@ class Upload extends StatefulWidget {
 }
 
 class _UploadState extends State<Upload> {
-  selectImage() {}
+  File file;
+  final imagePicker = ImagePicker();
+
+  Future handleTakePhoto() async {
+    Navigator.pop(context);
+    final picked = await imagePicker.getImage(
+      source: ImageSource.camera,
+      maxHeight: 675,
+      maxWidth: 960,
+    );
+    if (picked != null) {
+      setState(() {
+        file = File(picked.path);
+      });
+    }
+  }
+
+  Future handleChooseFromGallery() async {
+    Navigator.pop(context);
+    final picked = await imagePicker.getImage(
+      source: ImageSource.gallery,
+    );
+    if (picked != null) {
+      setState(() {
+        file = File(picked.path);
+      });
+    }
+  }
+
+  selectImage(parentContext) {
+    return showDialog(
+        context: parentContext,
+        builder: (context) {
+          return SimpleDialog(
+            title: Text('Create Post'),
+            children: <Widget>[
+              SimpleDialogOption(
+                child: Text('Photo with Camera'),
+                onPressed: handleTakePhoto,
+              ),
+              SimpleDialogOption(
+                child: Text('Image from Gallery'),
+                onPressed: handleChooseFromGallery,
+              ),
+              SimpleDialogOption(
+                child: Text('Cancel'),
+                onPressed: () => Navigator.pop(context),
+              ),
+            ],
+          );
+        });
+  }
 
   Container buildSplashScreen() {
     return Container(
@@ -41,8 +94,12 @@ class _UploadState extends State<Upload> {
     );
   }
 
+  buildUploadForm() {
+    return Text('loaded');
+  }
+
   @override
   Widget build(BuildContext context) {
-    return buildSplashScreen();
+    return file == null ? buildSplashScreen() : buildUploadForm();
   }
 }
