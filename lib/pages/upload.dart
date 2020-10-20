@@ -306,12 +306,12 @@ class _UploadState extends State<Upload>
     locationController.text = formattedAddress;
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return file == null ? buildSplashScreen() : buildUploadForm();
-  }
+  bool get wantKeepAlive => true;
 
   @override
-  // TODO: implement wantKeepAlive
-  bool get wantKeepAlive => throw UnimplementedError();
+  Widget build(BuildContext context) {
+    super.build(context);
+
+    return file == null ? buildSplashScreen() : buildUploadForm();
+  }
 }
