@@ -19,7 +19,8 @@ class Upload extends StatefulWidget {
   _UploadState createState() => _UploadState();
 }
 
-class _UploadState extends State<Upload> {
+class _UploadState extends State<Upload>
+    with AutomaticKeepAliveClientMixin<Upload> {
   TextEditingController locationController = TextEditingController();
   TextEditingController captionController = TextEditingController();
 
@@ -136,7 +137,22 @@ class _UploadState extends State<Upload> {
   }
 
   createPostInFirestore(
-      {String mediaUrl, String location, String description}) {}
+      {String mediaUrl, String location, String description}) {
+    postsRef
+        .document(widget.currentUser.id)
+        .collection('userPosts')
+        .document(postId)
+        .setData({
+      'postId': postId,
+      'ownerId': widget.currentUser.id,
+      'username': widget.currentUser.username,
+      'mediaUrl': mediaUrl,
+      'description': description,
+      'location': location,
+      'timestamp': timestamp,
+      'likes': {},
+    });
+  }
 
   handleSubmit() async {
     setState(() {
@@ -149,6 +165,13 @@ class _UploadState extends State<Upload> {
       location: locationController.text,
       description: captionController.text,
     );
+    captionController.clear();
+    locationController.clear();
+    setState(() {
+      file = null;
+      isUploading = false;
+      postId = Uuid().v4();
+    });
   }
 
   Scaffold buildUploadForm() {
@@ -272,4 +295,8 @@ class _UploadState extends State<Upload> {
   Widget build(BuildContext context) {
     return file == null ? buildSplashScreen() : buildUploadForm();
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => throw UnimplementedError();
 }
