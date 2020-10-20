@@ -9,11 +9,15 @@ class EditProfile extends StatefulWidget {
 }
 
 class _EditProfileState extends State<EditProfile> {
+  bool isLoading = false;
+
   @override
   void initState() {
     super.initState();
     getUser();
   }
+
+  getUser() async {}
 
   @override
   Widget build(BuildContext context) {
