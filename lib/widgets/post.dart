@@ -153,8 +153,51 @@ class _PostState extends State<Post> {
                 color: Colors.pink,
               ),
             ),
+            Padding(
+              padding: EdgeInsets.only(right: 20.0),
+            ),
+            GestureDetector(
+              onTap: () => print('liking post'),
+              child: Icon(
+                Icons.chat,
+                size: 28.0,
+                color: Colors.blue[900],
+              ),
+            ),
           ],
-        )
+        ),
+        Row(
+          children: <Widget>[
+            Container(
+              margin: EdgeInsets.only(left: 20.0),
+              child: Text(
+                '$likeCount likes',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            )
+          ],
+        ),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Container(
+              margin: EdgeInsets.only(left: 20.0),
+              child: Text(
+                '$username',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Expanded(
+              child: Text(description),
+            )
+          ],
+        ),
       ],
     );
   }

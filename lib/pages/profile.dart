@@ -182,6 +182,10 @@ class _ProfileState extends State<Profile> {
       body: ListView(
         children: <Widget>[
           buildProfileHeader(),
+          Divider(
+            height: 0.0,
+          ),
+          buil
         ],
       ),
     );
