@@ -19,7 +19,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  animator: 0.1.4
+  animator: 2.0.1
   cached_network_image: null
   cloud_firestore: ^0.9.7+2
   cupertino_icons: ^0.1.2
