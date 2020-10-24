@@ -117,6 +117,8 @@ class _ProfileState extends State<Profile> {
         text: 'Edit Profile',
         function: editProfile,
       );
+    } else {
+      return Text('button');
     }
   }
 
