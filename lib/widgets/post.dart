@@ -18,7 +18,7 @@ class Post extends StatefulWidget {
   final String mediaUrl;
   final dynamic likes;
 
-  const Post({
+  Post({
     this.postId,
     this.ownerId,
     this.username,
