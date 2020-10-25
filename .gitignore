@@ -11,6 +11,13 @@
 google-services.json
 *build.gradle
 
+
+.firebaserc
+firebase.json
+functions/
+package-lock.json
+
+
 # IntelliJ related
 *.iml
 *.ipr

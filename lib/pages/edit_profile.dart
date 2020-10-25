@@ -8,7 +8,7 @@ import 'package:fluttershare/widgets/progress.dart';
 class EditProfile extends StatefulWidget {
   final String currentUserId;
 
-  const EditProfile({Key key, this.currentUserId}) : super(key: key);
+  EditProfile({Key key, this.currentUserId});
   @override
   _EditProfileState createState() => _EditProfileState();
 }

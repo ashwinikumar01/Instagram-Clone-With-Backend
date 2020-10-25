@@ -118,6 +118,8 @@ class _UploadState extends State<Upload>
     });
   }
 
+  //Image compress for firestore
+
   compressImage() async {
     final tempDir = await getTemporaryDirectory();
     final path = tempDir.path;
@@ -137,6 +139,7 @@ class _UploadState extends State<Upload>
     return downloadUrl;
   }
 
+  // creating in firestore
   createPostInFirestore(
       {String mediaUrl, String location, String description}) {
     postsRef
