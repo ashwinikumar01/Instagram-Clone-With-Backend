@@ -16,14 +16,14 @@ This application basically uses firebase,firebase authentication,cloud firestore
 
 ## Features:
 
-:heavy_check_mark: google authentication is provided
-:heavy_check_mark: live push notifications for IOS and Android
-:heavy_check_mark: heartbeat animation during liking of post
-:heavy_check_mark: cloud firestore and firebase messaging is available
-:heavy_check_mark: follow,unfollow user and deleting post functionality is available
-:heavy_check_mark: uploading images using firebase storage is present
-:heavy_check_mark: search functionality for other users is available
-:heavy_check_mark: live activity feed notifications for user 
+- google authentication is provided
+- live push notifications for IOS and Android
+- heartbeat animation during liking of post
+- cloud firestore and firebase messaging is available
+- follow,unfollow user and deleting post functionality is available
+- uploading images using firebase storage is present
+- search functionality for other users is available
+- live activity feed notifications for user 
 
 ## Flutter Packages
 Packages Name        | Usage       
