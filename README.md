@@ -34,7 +34,7 @@ Packages Name        | Usage
 |[firebase_storage](https://pub.dev/packages/firebase_storage)| Storing image in firebase
 |[cached_network_image](https://pub.dev/packages/cached_network_image) | Show images from the internet
 |[geolocator](https://pub.dev/packages/geolocator) | User's live location
-|[time_ago](https://pub.dev/packages/time_ago) | Showing last moment
+|[time_ago](https://pub.dev/packages/timeago) | Showing last moment
 |[image_picker](https://pub.dev/packages/image_picker) | For picking image from device
 |[animator](https://pub.dev/packages/animator) | Beautiful animations
 
